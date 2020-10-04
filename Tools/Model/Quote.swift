@@ -7,16 +7,20 @@
 
 import RealmSwift
 
-class Quote: Object {
+class Quote: Object, Decodable {
     @objc dynamic var id: Int = 0
-    @objc dynamic var tags: [String] = []
-    @objc dynamic var isFavorite: Bool = false
+    var tags: List<String> = List<String>()
     @objc dynamic var author: String = ""
-    @objc dynamic var upvoteCount: Int = 0
-    @objc dynamic var downvoteCount: Int = 0
-    @objc dynamic var favoriteCount: Int = 0
-    @objc dynamic var url: URL?
     @objc dynamic var body: String = ""
-//    "author_permalink": "linus-torvalds",
-//    "dialogue": false,
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case tags
+        case author
+        case body
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }

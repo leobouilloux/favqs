@@ -17,9 +17,7 @@
 		B3080AC225295796007D319B /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3080ABA25295796007D319B /* CoordinatorFactory.swift */; };
 		B3080AC325295796007D319B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3080ABB25295796007D319B /* Coordinator.swift */; };
 		B3080ACE252957DB007D319B /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3080AC7252957DB007D319B /* Provider.swift */; };
-		B3080ACF252957DB007D319B /* MockProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3080AC8252957DB007D319B /* MockProvider.swift */; };
 		B3080AD0252957DB007D319B /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3080AC9252957DB007D319B /* NetworkProvider.swift */; };
-		B3080AD425295829007D319B /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3080AD325295829007D319B /* DataProvider.swift */; };
 		B3080AD8252958C6007D319B /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3080AD7252958C6007D319B /* Quote.swift */; };
 		B3080ADD25296145007D319B /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3080ADC25296145007D319B /* NavigationController.swift */; };
 		B3080AE0252961BE007D319B /* LoaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3080ADF252961BE007D319B /* LoaderController.swift */; };
@@ -67,6 +65,15 @@
 		B3DBE7A0252A53D400EAE169 /* FavoritesFactoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE79C252A53D400EAE169 /* FavoritesFactoryInterface.swift */; };
 		B3DBE7B2252A54CA00EAE169 /* TabBarCoordinatorFactoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7B1252A54CA00EAE169 /* TabBarCoordinatorFactoryInterface.swift */; };
 		B3DBE7B7252A54EC00EAE169 /* TabBarCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7B6252A54EC00EAE169 /* TabBarCoordinatorFactory.swift */; };
+		B3DBE7BC252A642300EAE169 /* QuotesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7BB252A642300EAE169 /* QuotesResponse.swift */; };
+		B3DBE7C3252A6CE900EAE169 /* QuoteTableViewCellViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7C2252A6CE900EAE169 /* QuoteTableViewCellViewModelInterface.swift */; };
+		B3DBE7CB252A6D3B00EAE169 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7CA252A6D3B00EAE169 /* UITableView+Extension.swift */; };
+		B3DBE7D0252A6D5000EAE169 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7CF252A6D5000EAE169 /* UITableViewCell+Extension.swift */; };
+		B3DBE7D6252A6D9000EAE169 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7D5252A6D9000EAE169 /* RxTableViewCell.swift */; };
+		B3DBE7DE252A6E0900EAE169 /* QuoteTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7DD252A6E0900EAE169 /* QuoteTableViewCellViewModel.swift */; };
+		B3DBE7E3252A6E7F00EAE169 /* QuoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7E2252A6E7F00EAE169 /* QuoteTableViewCell.swift */; };
+		B3DBE7E8252A72C000EAE169 /* QuotesCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7E7252A72C000EAE169 /* QuotesCellType.swift */; };
+		B3DBE7ED252A8BB400EAE169 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7EC252A8BB400EAE169 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,9 +106,7 @@
 		B3080ABA25295796007D319B /* CoordinatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
 		B3080ABB25295796007D319B /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B3080AC7252957DB007D319B /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
-		B3080AC8252957DB007D319B /* MockProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockProvider.swift; sourceTree = "<group>"; };
 		B3080AC9252957DB007D319B /* NetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
-		B3080AD325295829007D319B /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		B3080AD7252958C6007D319B /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		B3080ADC25296145007D319B /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		B3080ADF252961BE007D319B /* LoaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderController.swift; sourceTree = "<group>"; };
@@ -158,6 +163,15 @@
 		B3DBE79C252A53D400EAE169 /* FavoritesFactoryInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesFactoryInterface.swift; sourceTree = "<group>"; };
 		B3DBE7B1252A54CA00EAE169 /* TabBarCoordinatorFactoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorFactoryInterface.swift; sourceTree = "<group>"; };
 		B3DBE7B6252A54EC00EAE169 /* TabBarCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorFactory.swift; sourceTree = "<group>"; };
+		B3DBE7BB252A642300EAE169 /* QuotesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesResponse.swift; sourceTree = "<group>"; };
+		B3DBE7C2252A6CE900EAE169 /* QuoteTableViewCellViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteTableViewCellViewModelInterface.swift; sourceTree = "<group>"; };
+		B3DBE7CA252A6D3B00EAE169 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		B3DBE7CF252A6D5000EAE169 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		B3DBE7D5252A6D9000EAE169 /* RxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
+		B3DBE7DD252A6E0900EAE169 /* QuoteTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		B3DBE7E2252A6E7F00EAE169 /* QuoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteTableViewCell.swift; sourceTree = "<group>"; };
+		B3DBE7E7252A72C000EAE169 /* QuotesCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesCellType.swift; sourceTree = "<group>"; };
+		B3DBE7EC252A8BB400EAE169 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,9 +249,8 @@
 			isa = PBXGroup;
 			children = (
 				B3080AC7252957DB007D319B /* Provider.swift */,
-				B3080AC8252957DB007D319B /* MockProvider.swift */,
 				B3080AC9252957DB007D319B /* NetworkProvider.swift */,
-				B3080AD325295829007D319B /* DataProvider.swift */,
+				B3DBE7EC252A8BB400EAE169 /* NetworkError.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -246,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				B3080AD7252958C6007D319B /* Quote.swift */,
+				B3DBE7BB252A642300EAE169 /* QuotesResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -253,6 +267,7 @@
 		B3080ADA2529610A007D319B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B3DBE7D4252A6D8600EAE169 /* RxTableViewCell */,
 				B3DBE74E252A48DF00EAE169 /* TabBarController */,
 				B3080AE625296354007D319B /* SnackBar */,
 				B3080AE1252962E1007D319B /* ViewController */,
@@ -303,6 +318,8 @@
 				B3080AEE25296422007D319B /* UIViewController+Extension.swift */,
 				B3080AF02529645B007D319B /* NSObject+Extension.swift */,
 				B3DBE725252A440C00EAE169 /* UIColor+Extension.swift */,
+				B3DBE7CA252A6D3B00EAE169 /* UITableView+Extension.swift */,
+				B3DBE7CF252A6D5000EAE169 /* UITableViewCell+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -407,6 +424,7 @@
 		B3DBE754252A4BAD00EAE169 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				B3DBE7C0252A6CCD00EAE169 /* Cells */,
 				B3DBE775252A4F4100EAE169 /* Coordinator */,
 				B3DBE756252A4BBB00EAE169 /* Quotes */,
 				B3DBE755252A4BB300EAE169 /* Favorites */,
@@ -432,6 +450,7 @@
 				B3DBE757252A4BDF00EAE169 /* QuotesViewController.swift */,
 				B3DBE761252A4C4000EAE169 /* QuotesViewModel.swift */,
 				B3DBE766252A4CBF00EAE169 /* QuotesViewModelInterface.swift */,
+				B3DBE7E7252A72C000EAE169 /* QuotesCellType.swift */,
 			);
 			path = Quotes;
 			sourceTree = "<group>";
@@ -490,6 +509,32 @@
 				B3DBE7B6252A54EC00EAE169 /* TabBarCoordinatorFactory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		B3DBE7C0252A6CCD00EAE169 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B3DBE7C1252A6CD100EAE169 /* QuoteCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B3DBE7C1252A6CD100EAE169 /* QuoteCell */ = {
+			isa = PBXGroup;
+			children = (
+				B3DBE7C2252A6CE900EAE169 /* QuoteTableViewCellViewModelInterface.swift */,
+				B3DBE7DD252A6E0900EAE169 /* QuoteTableViewCellViewModel.swift */,
+				B3DBE7E2252A6E7F00EAE169 /* QuoteTableViewCell.swift */,
+			);
+			path = QuoteCell;
+			sourceTree = "<group>";
+		};
+		B3DBE7D4252A6D8600EAE169 /* RxTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B3DBE7D5252A6D9000EAE169 /* RxTableViewCell.swift */,
+			);
+			path = RxTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -668,10 +713,10 @@
 			files = (
 				B3080ABF25295796007D319B /* Router.swift in Sources */,
 				B3DBE7B2252A54CA00EAE169 /* TabBarCoordinatorFactoryInterface.swift in Sources */,
-				B3080ACF252957DB007D319B /* MockProvider.swift in Sources */,
+				B3DBE7E3252A6E7F00EAE169 /* QuoteTableViewCell.swift in Sources */,
+				B3DBE7CB252A6D3B00EAE169 /* UITableView+Extension.swift in Sources */,
 				B3DBE72C252A461900EAE169 /* Loc.swift in Sources */,
 				B3DBE771252A4D2400EAE169 /* FavoritesViewModel.swift in Sources */,
-				B3080AD425295829007D319B /* DataProvider.swift in Sources */,
 				B3080AC025295796007D319B /* PresentationType.swift in Sources */,
 				B3DBE777252A4F4C00EAE169 /* TabBarCoordinator.swift in Sources */,
 				B3080AEA252963A4007D319B /* SnackBarController.swift in Sources */,
@@ -679,6 +724,7 @@
 				B3080AF12529645B007D319B /* NSObject+Extension.swift in Sources */,
 				B30A7301252952D400E3EA9E /* AppDelegate.swift in Sources */,
 				B3DBE71D252967C100EAE169 /* SplashScreenViewModel.swift in Sources */,
+				B3DBE7ED252A8BB400EAE169 /* NetworkError.swift in Sources */,
 				B3DBE71A252967C100EAE169 /* SplashScreenCoordinatorOutput.swift in Sources */,
 				B3DBE7A0252A53D400EAE169 /* FavoritesFactoryInterface.swift in Sources */,
 				B30A7303252952D400E3EA9E /* SceneDelegate.swift in Sources */,
@@ -687,15 +733,18 @@
 				B3DBE79E252A53D400EAE169 /* FavoritesFactory.swift in Sources */,
 				B3DBE762252A4C4000EAE169 /* QuotesViewModel.swift in Sources */,
 				B3DBE75D252A4BEB00EAE169 /* FavoritesViewController.swift in Sources */,
+				B3DBE7BC252A642300EAE169 /* QuotesResponse.swift in Sources */,
 				B3080AC125295796007D319B /* BaseCoordinator.swift in Sources */,
 				B3080ABD25295796007D319B /* RouterImp.swift in Sources */,
 				B3080AE0252961BE007D319B /* LoaderController.swift in Sources */,
 				B3DBE720252967C100EAE169 /* SplashScreenOutput.swift in Sources */,
+				B3DBE7E8252A72C000EAE169 /* QuotesCellType.swift in Sources */,
 				B3DBE78E252A51D200EAE169 /* QuotesFactory.swift in Sources */,
 				B3080AEF25296422007D319B /* UIViewController+Extension.swift in Sources */,
 				B3DBE767252A4CBF00EAE169 /* QuotesViewModelInterface.swift in Sources */,
 				B3080AD0252957DB007D319B /* NetworkProvider.swift in Sources */,
 				B3080ABC25295796007D319B /* DeepLinkOption.swift in Sources */,
+				B3DBE7D6252A6D9000EAE169 /* RxTableViewCell.swift in Sources */,
 				B3DBE71F252967C100EAE169 /* SplashScreenViewController.swift in Sources */,
 				B3DBE79D252A53D400EAE169 /* FavoritesCoordinator.swift in Sources */,
 				B3DBE76C252A4CF400EAE169 /* FavoritesViewModelInterface.swift in Sources */,
@@ -711,11 +760,14 @@
 				B3080AEC252963C0007D319B /* SnackBarType.swift in Sources */,
 				B3080AC225295796007D319B /* CoordinatorFactory.swift in Sources */,
 				B3DBE793252A52FC00EAE169 /* QuotesCoordinatorFactory.swift in Sources */,
+				B3DBE7D0252A6D5000EAE169 /* UITableViewCell+Extension.swift in Sources */,
 				B3DBE71B252967C100EAE169 /* SplashScreenCoordinator.swift in Sources */,
 				B3080ABE25295796007D319B /* Presentable.swift in Sources */,
+				B3DBE7DE252A6E0900EAE169 /* QuoteTableViewCellViewModel.swift in Sources */,
 				B3DBE750252A48EC00EAE169 /* TabBarController.swift in Sources */,
 				B3DBE71E252967C100EAE169 /* SplashScreenViewModelInterface.swift in Sources */,
 				B3DBE77D252A500F00EAE169 /* QuotesCoordinator.swift in Sources */,
+				B3DBE7C3252A6CE900EAE169 /* QuoteTableViewCellViewModelInterface.swift in Sources */,
 				B3DBE71C252967C100EAE169 /* SplashScreenCoordinatorFactory.swift in Sources */,
 				B3DBE758252A4BDF00EAE169 /* QuotesViewController.swift in Sources */,
 				B3080ACE252957DB007D319B /* Provider.swift in Sources */,

@@ -47,8 +47,8 @@ private extension TabBarController {
 
     func setupItems() {
         let bottomBarItems: [(image: UIImage, title: String)] = [
-            (Assets.Icons.quoteBubbleFill, "Toilettes"),
-            (Assets.Icons.starFill, "Favoris")
+            (Assets.Icons.quoteBubbleFill, Loc.Quotes.title),
+            (Assets.Icons.starFill, Loc.Favorites.title)
         ]
 
         let items = bottomBarItems.enumerated().map { index, item in

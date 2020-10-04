@@ -6,6 +6,11 @@
   
 */
 
+// Errors
+"error.noDataReceived" = "No data has been received from the remote server";
+"error.jsonDecodeFailed" = "The data received seems to be badly formatted";
+"error.errorReceived" = "Unexpected network error";
+
 // SplashScreen
 "splashScreen.title" = "FavQs";
 "splashScreen.avatarCaption" = "Technical test project made by Léo Marcotte";

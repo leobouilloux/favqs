@@ -9,5 +9,5 @@
 import Foundation
 
 protocol Provider {
-    func fetchData(completion: @escaping (Result<[Quote], Error>) -> Void)
+    func fetchQuotes(for page: Int, completion: @escaping (Result<[Quote], Error>) -> Void)
 }

@@ -10,21 +10,19 @@ import UIKit
 public class SnackBarController {
     var snackBarTopConstraint = NSLayoutConstraint()
 
-    var parentView: UIView!
-    var snackBar: SnackBar!
+    var parentView: UIView?
+    let snackBar = SnackBar()
 
     func setup(in controller: UIViewController) {
-        snackBar = SnackBar()
         parentView = controller.view
 
-        controller.view.addSubview(snackBar)
+        guard let parentView = self.parentView else { return }
+
+        parentView.addSubview(snackBar)
+
         snackBar.translatesAutoresizingMaskIntoConstraints = false
 
-        if #available(iOS 11, *) {
-            snackBarTopConstraint = snackBar.topAnchor.constraint(equalTo: parentView.safeAreaLayoutGuide.topAnchor)
-        } else {
-            snackBarTopConstraint = snackBar.topAnchor.constraint(equalTo: controller.topLayoutGuide.bottomAnchor)
-        }
+        snackBarTopConstraint = snackBar.topAnchor.constraint(equalTo: parentView.safeAreaLayoutGuide.topAnchor)
         NSLayoutConstraint.activate([
             snackBarTopConstraint,
             snackBar.leftAnchor.constraint(equalTo: parentView.leftAnchor, constant: 16),
@@ -61,18 +59,19 @@ public class SnackBarController {
 
     private func animate() {
         snackBar.isHidden = false
-        self.snackBarTopConstraint.constant = 0
+        parentView?.bringSubviewToFront(snackBar)
+        self.snackBarTopConstraint.constant = 16
 
         UIView.animate(withDuration: 1, animations: {
-            self.parentView.layoutIfNeeded()
+            self.parentView?.layoutIfNeeded()
         })
         DispatchQueue.main.asyncAfter(deadline: .now() + 2 + 1) {
             self.snackBarTopConstraint.constant = -self.snackBar.frame.height
             UIView.animate(withDuration: 1, animations: {
-                self.parentView.layoutIfNeeded()
-            }) { _ in
+                self.parentView?.layoutIfNeeded()
+            }, completion: { _ in
                 self.snackBar.isHidden = true
-            }
+            })
         }
     }
 }

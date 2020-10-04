@@ -6,6 +6,8 @@
 //
 
 import RxSwift
+import RealmSwift
+
 
 final class ApplicationCoordinator: Coordinator {
     var window: UIWindow
@@ -19,6 +21,11 @@ final class ApplicationCoordinator: Coordinator {
         self.coordinatorFactory = coordinatorFactory
         self.window = window
         self.provider = provider
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
     }
 
     func start(with option: DeepLinkOption? = nil, presentationType: PresentationType = .root) {
