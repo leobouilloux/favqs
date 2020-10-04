@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Favqs
+
+  Created by Leo Marcotte on 04/10/2020.
+  
+*/
+
+// SplashScreen
+"splashScreen.title" = "FavQs";
+"splashScreen.avatarCaption" = "Test technique réalisé par Léo Marcotte";
+
+// Quotes
+"quotes.title" = "Citations";
+
+// Favorites
+"favorites.title" = "Favoris";
