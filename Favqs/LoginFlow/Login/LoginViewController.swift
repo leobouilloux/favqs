@@ -5,28 +5,31 @@
 //  Created by Leo Marcotte on 05/10/2020.
 //
 
-import UIKit
 import RxCocoa
 import RxSwift
+import UIKit
 
 final class LoginViewController: RxViewController {
     private let viewModel: LoginViewModelInterface
-    
+
     private let loginTextField = TextField()
     private let passwordTextField = TextField()
     private let signInButton = UIButton()
-    
+
     init(with viewModel: LoginViewModelInterface) {
         self.viewModel = viewModel
-        
+
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
         setupRxBindings()
+
+        loginTextField.text = "leobouilloux"
+        passwordTextField.text = "zJm|0sel"
     }
 }
 
@@ -38,7 +41,7 @@ private extension LoginViewController {
         setupPasswordTextField()
         setupSignInButton()
     }
-    
+
     func setupLoginTextField() {
         loginTextField.delegate = self
         loginTextField.attributedPlaceholder = NSAttributedString(
@@ -51,7 +54,7 @@ private extension LoginViewController {
         loginTextField.backgroundColor = .secondarySystemBackground
         loginTextField.keyboardType = .namePhonePad
         view.addSubview(loginTextField)
-        
+
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             loginTextField.heightAnchor.constraint(equalToConstant: 36),
@@ -60,7 +63,7 @@ private extension LoginViewController {
             loginTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
-    
+
     func setupPasswordTextField() {
         passwordTextField.delegate = self
         passwordTextField.attributedPlaceholder = NSAttributedString(
@@ -77,7 +80,7 @@ private extension LoginViewController {
         ]
 
         view.addSubview(passwordTextField)
-        
+
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             passwordTextField.heightAnchor.constraint(equalToConstant: 36),
@@ -86,12 +89,12 @@ private extension LoginViewController {
             passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
-    
+
     func setupSignInButton() {
         signInButton.tintColor = .white
         signInButton.backgroundColor = .systemBlue
         view.addSubview(signInButton)
-        
+
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             signInButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
@@ -99,22 +102,22 @@ private extension LoginViewController {
             signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             signInButton.heightAnchor.constraint(equalToConstant: 56)
         ])
-        
+
         signInButton.layer.masksToBounds = true
         signInButton.layer.cornerRadius = 4
     }
-    
+
     /* Rx Bindings */
     func setupRxBindings() {
         bindNavigationItems()
         bindSignInButton()
         bindErrorMessage()
     }
-    
+
     func bindNavigationItems() {
         viewModel.title.bind(to: navigationItem.rx.title).disposed(by: bag)
     }
-        
+
     func bindSignInButton() {
         viewModel.signInButtonTitle.bind(to: signInButton.rx.title()).disposed(by: bag)
         signInButton.rx.tap
@@ -127,7 +130,7 @@ private extension LoginViewController {
             })
             .disposed(by: bag)
     }
-    
+
     func bindErrorMessage() {
         viewModel.errorMessage
             .subscribe(onNext: { [weak self] errorMessage in
@@ -150,4 +153,3 @@ extension LoginViewController: UITextFieldDelegate {
         }
     }
 }
-

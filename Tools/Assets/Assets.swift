@@ -24,5 +24,7 @@ enum Assets {
 
         static var chevronLeft = UIImage(systemName: "chevron.backward") ?? UIImage()
         static var close = UIImage(systemName: "xmark") ?? UIImage()
+
+        static var personCropCircle = UIImage(systemName: "person.crop.circle") ?? UIImage()
     }
 }

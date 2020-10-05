@@ -10,14 +10,15 @@ import Foundation
 struct UserSessionError: Decodable {
     var code: Int
     var message: String
-    
+
     enum CodingKeys: String, CodingKey {
         case code = "error_code"
         case message
     }
-    
+
     var error: SessionError {
         switch code {
+        case 20: return .noSessionFoundForUser
         case 21: return .invalidLoginOrPassword
         case 22: return .loginNotActive
         case 23: return .loginOrPasswordMissing

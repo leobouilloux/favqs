@@ -13,7 +13,7 @@ import RxSwift
 final class FavoritesViewModel: FavoritesViewModelInterface {
     private let provider: Provider
 
-    let title = BehaviorRelay<String>(value: Loc.Quotes.title)
+    let title = BehaviorRelay<String>(value: Loc.Favorites.title)
 
     let isControllerActive = BehaviorRelay<Bool>(value: false)
 

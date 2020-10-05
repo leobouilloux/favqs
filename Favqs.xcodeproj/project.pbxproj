@@ -89,6 +89,18 @@
 		B3DBE873252ADA9D00EAE169 /* UserSessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE872252ADA9D00EAE169 /* UserSessionError.swift */; };
 		B3DBE878252AE0E100EAE169 /* LoginOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE877252AE0E100EAE169 /* LoginOutput.swift */; };
 		B3DBE87D252AE52100EAE169 /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE87C252AE52100EAE169 /* SessionError.swift */; };
+		B3DBE883252AEA4300EAE169 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE882252AEA4300EAE169 /* AccountViewController.swift */; };
+		B3DBE88B252AEA4F00EAE169 /* AccountViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE88A252AEA4F00EAE169 /* AccountViewModelInterface.swift */; };
+		B3DBE890252AEA5700EAE169 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE88F252AEA5700EAE169 /* AccountViewModel.swift */; };
+		B3DBE896252AEA7000EAE169 /* AccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE895252AEA7000EAE169 /* AccountCoordinator.swift */; };
+		B3DBE89F252AEA8900EAE169 /* AccountFactoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE89E252AEA8900EAE169 /* AccountFactoryInterface.swift */; };
+		B3DBE8A4252AEA9300EAE169 /* AccountFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE8A3252AEA9300EAE169 /* AccountFactory.swift */; };
+		B3DBE8A9252AEA9E00EAE169 /* AccountCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE8A8252AEA9E00EAE169 /* AccountCoordinatorFactory.swift */; };
+		B3DBE8BC252AF2DA00EAE169 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE8BB252AF2DA00EAE169 /* User.swift */; };
+		B3DBE8C1252AF4BA00EAE169 /* AccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE8C0252AF4BA00EAE169 /* AccountDetails.swift */; };
+		B3DBE8C6252AFB0500EAE169 /* AccountOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE8C5252AFB0500EAE169 /* AccountOutput.swift */; };
+		B3DBE8CB252B0EC500EAE169 /* TabBarCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE8CA252B0EC500EAE169 /* TabBarCoordinatorOutput.swift */; };
+		B3DBE8D0252B0F3700EAE169 /* AccountCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE8CF252B0F3700EAE169 /* AccountCoordinatorOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +215,18 @@
 		B3DBE872252ADA9D00EAE169 /* UserSessionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionError.swift; sourceTree = "<group>"; };
 		B3DBE877252AE0E100EAE169 /* LoginOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOutput.swift; sourceTree = "<group>"; };
 		B3DBE87C252AE52100EAE169 /* SessionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionError.swift; sourceTree = "<group>"; };
+		B3DBE882252AEA4300EAE169 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		B3DBE88A252AEA4F00EAE169 /* AccountViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModelInterface.swift; sourceTree = "<group>"; };
+		B3DBE88F252AEA5700EAE169 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		B3DBE895252AEA7000EAE169 /* AccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinator.swift; sourceTree = "<group>"; };
+		B3DBE89E252AEA8900EAE169 /* AccountFactoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountFactoryInterface.swift; sourceTree = "<group>"; };
+		B3DBE8A3252AEA9300EAE169 /* AccountFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountFactory.swift; sourceTree = "<group>"; };
+		B3DBE8A8252AEA9E00EAE169 /* AccountCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinatorFactory.swift; sourceTree = "<group>"; };
+		B3DBE8BB252AF2DA00EAE169 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B3DBE8C0252AF4BA00EAE169 /* AccountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetails.swift; sourceTree = "<group>"; };
+		B3DBE8C5252AFB0500EAE169 /* AccountOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountOutput.swift; sourceTree = "<group>"; };
+		B3DBE8CA252B0EC500EAE169 /* TabBarCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorOutput.swift; sourceTree = "<group>"; };
+		B3DBE8CF252B0F3700EAE169 /* AccountCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinatorOutput.swift; sourceTree = "<group>"; };
 		CEA7BB72951AA853184560B3 /* Pods-FavqsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavqsTests.release.xcconfig"; path = "Target Support Files/Pods-FavqsTests/Pods-FavqsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -299,6 +323,8 @@
 				B3DBE86D252AD9AF00EAE169 /* UserSession.swift */,
 				B3DBE872252ADA9D00EAE169 /* UserSessionError.swift */,
 				B3DBE87C252AE52100EAE169 /* SessionError.swift */,
+				B3DBE8BB252AF2DA00EAE169 /* User.swift */,
+				B3DBE8C0252AF4BA00EAE169 /* AccountDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -466,6 +492,7 @@
 		B3DBE754252A4BAD00EAE169 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				B3DBE881252AEA3100EAE169 /* Account */,
 				B3DBE7C0252A6CCD00EAE169 /* Cells */,
 				B3DBE775252A4F4100EAE169 /* Coordinator */,
 				B3DBE756252A4BBB00EAE169 /* Quotes */,
@@ -503,6 +530,7 @@
 			children = (
 				B3DBE7B0252A54B900EAE169 /* Factory */,
 				B3DBE776252A4F4C00EAE169 /* TabBarCoordinator.swift */,
+				B3DBE8CA252B0EC500EAE169 /* TabBarCoordinatorOutput.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -609,6 +637,38 @@
 				B3DBE865252AD6FE00EAE169 /* TextField.swift */,
 			);
 			path = TextField;
+			sourceTree = "<group>";
+		};
+		B3DBE881252AEA3100EAE169 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				B3DBE894252AEA6100EAE169 /* Coordinator */,
+				B3DBE882252AEA4300EAE169 /* AccountViewController.swift */,
+				B3DBE88A252AEA4F00EAE169 /* AccountViewModelInterface.swift */,
+				B3DBE88F252AEA5700EAE169 /* AccountViewModel.swift */,
+				B3DBE8C5252AFB0500EAE169 /* AccountOutput.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		B3DBE894252AEA6100EAE169 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B3DBE89D252AEA7800EAE169 /* Factory */,
+				B3DBE895252AEA7000EAE169 /* AccountCoordinator.swift */,
+				B3DBE8CF252B0F3700EAE169 /* AccountCoordinatorOutput.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B3DBE89D252AEA7800EAE169 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				B3DBE89E252AEA8900EAE169 /* AccountFactoryInterface.swift */,
+				B3DBE8A3252AEA9300EAE169 /* AccountFactory.swift */,
+				B3DBE8A8252AEA9E00EAE169 /* AccountCoordinatorFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -836,6 +896,7 @@
 				B3DBE771252A4D2400EAE169 /* FavoritesViewModel.swift in Sources */,
 				B3080AC025295796007D319B /* PresentationType.swift in Sources */,
 				B3DBE777252A4F4C00EAE169 /* TabBarCoordinator.swift in Sources */,
+				B3DBE896252AEA7000EAE169 /* AccountCoordinator.swift in Sources */,
 				B3080AEA252963A4007D319B /* SnackBarController.swift in Sources */,
 				B3080AE3252962FA007D319B /* BaseViewController.swift in Sources */,
 				B3080AF12529645B007D319B /* NSObject+Extension.swift in Sources */,
@@ -846,6 +907,7 @@
 				B3DBE71A252967C100EAE169 /* SplashScreenCoordinatorOutput.swift in Sources */,
 				B3DBE878252AE0E100EAE169 /* LoginOutput.swift in Sources */,
 				B3DBE856252ACE9100EAE169 /* LoginCoordinatorFactory.swift in Sources */,
+				B3DBE8D0252B0F3700EAE169 /* AccountCoordinatorOutput.swift in Sources */,
 				B3DBE7A0252A53D400EAE169 /* FavoritesFactoryInterface.swift in Sources */,
 				B30A7303252952D400E3EA9E /* SceneDelegate.swift in Sources */,
 				B3DBE79F252A53D400EAE169 /* FavoritesCoordinatorFactory.swift in Sources */,
@@ -856,6 +918,7 @@
 				B3DBE75D252A4BEB00EAE169 /* FavoritesViewController.swift in Sources */,
 				B3DBE7BC252A642300EAE169 /* QuotesResponse.swift in Sources */,
 				B3080AC125295796007D319B /* BaseCoordinator.swift in Sources */,
+				B3DBE8C1252AF4BA00EAE169 /* AccountDetails.swift in Sources */,
 				B3080ABD25295796007D319B /* RouterImp.swift in Sources */,
 				B3DBE7F8252A99A600EAE169 /* FavoritesCellType.swift in Sources */,
 				B3080AE0252961BE007D319B /* LoaderController.swift in Sources */,
@@ -864,6 +927,7 @@
 				B3DBE78E252A51D200EAE169 /* QuotesFactory.swift in Sources */,
 				B3080AEF25296422007D319B /* UIViewController+Extension.swift in Sources */,
 				B3DBE873252ADA9D00EAE169 /* UserSessionError.swift in Sources */,
+				B3DBE8A9252AEA9E00EAE169 /* AccountCoordinatorFactory.swift in Sources */,
 				B3DBE767252A4CBF00EAE169 /* QuotesViewModelInterface.swift in Sources */,
 				B3080AD0252957DB007D319B /* NetworkProvider.swift in Sources */,
 				B3080ABC25295796007D319B /* DeepLinkOption.swift in Sources */,
@@ -876,9 +940,11 @@
 				B3DBE7B7252A54EC00EAE169 /* TabBarCoordinatorFactory.swift in Sources */,
 				B3080AD8252958C6007D319B /* Quote.swift in Sources */,
 				B3080AC325295796007D319B /* Coordinator.swift in Sources */,
+				B3DBE883252AEA4300EAE169 /* AccountViewController.swift in Sources */,
 				B3DBE786252A517500EAE169 /* QuotesFactoryInterface.swift in Sources */,
 				B3DBE83F252AC6EB00EAE169 /* LoginViewController.swift in Sources */,
 				B3DBE847252AC6F600EAE169 /* LoginViewModelInterface.swift in Sources */,
+				B3DBE8BC252AF2DA00EAE169 /* User.swift in Sources */,
 				B3080ADD25296145007D319B /* NavigationController.swift in Sources */,
 				B3DBE74A252A477500EAE169 /* Assets.swift in Sources */,
 				B344E761252955F7006972EB /* ApplicationCoordinator.swift in Sources */,
@@ -886,20 +952,26 @@
 				B3080AC225295796007D319B /* CoordinatorFactory.swift in Sources */,
 				B3DBE866252AD6FE00EAE169 /* TextField.swift in Sources */,
 				B3DBE793252A52FC00EAE169 /* QuotesCoordinatorFactory.swift in Sources */,
+				B3DBE8A4252AEA9300EAE169 /* AccountFactory.swift in Sources */,
 				B3DBE7D0252A6D5000EAE169 /* UITableViewCell+Extension.swift in Sources */,
 				B3DBE71B252967C100EAE169 /* SplashScreenCoordinator.swift in Sources */,
 				B3DBE80B252AB03A00EAE169 /* Array+Extension.swift in Sources */,
 				B3080ABE25295796007D319B /* Presentable.swift in Sources */,
 				B3DBE7DE252A6E0900EAE169 /* QuoteTableViewCellViewModel.swift in Sources */,
+				B3DBE8CB252B0EC500EAE169 /* TabBarCoordinatorOutput.swift in Sources */,
 				B3DBE87D252AE52100EAE169 /* SessionError.swift in Sources */,
 				B3DBE750252A48EC00EAE169 /* TabBarController.swift in Sources */,
+				B3DBE8C6252AFB0500EAE169 /* AccountOutput.swift in Sources */,
 				B3DBE71E252967C100EAE169 /* SplashScreenViewModelInterface.swift in Sources */,
 				B3DBE85B252ACEEB00EAE169 /* LoginFactory.swift in Sources */,
 				B3DBE77D252A500F00EAE169 /* QuotesCoordinator.swift in Sources */,
 				B3DBE7C3252A6CE900EAE169 /* QuoteTableViewCellViewModelInterface.swift in Sources */,
 				B3DBE71C252967C100EAE169 /* SplashScreenCoordinatorFactory.swift in Sources */,
 				B3DBE758252A4BDF00EAE169 /* QuotesViewController.swift in Sources */,
+				B3DBE88B252AEA4F00EAE169 /* AccountViewModelInterface.swift in Sources */,
 				B3080ACE252957DB007D319B /* Provider.swift in Sources */,
+				B3DBE890252AEA5700EAE169 /* AccountViewModel.swift in Sources */,
+				B3DBE89F252AEA8900EAE169 /* AccountFactoryInterface.swift in Sources */,
 				B3DBE721252967C100EAE169 /* SplashScreenFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

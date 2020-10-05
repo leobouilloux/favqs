@@ -21,7 +21,7 @@ class TextField: UITextField {
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
-        
+
     override func draw(_ rect: CGRect) {
         layer.masksToBounds = true
         layer.cornerRadius = rect.height / 4

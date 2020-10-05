@@ -11,6 +11,7 @@
 "error.jsonDecodeFailed" = "Les données reçue ne sont pas correctement formatées";
 "error.errorReceived" = "Erreur réseau";
 
+"error.noSessionFoundForUser" = "Aucune session trouvée pour l'utilisateur actuel";
 "error.invalidLoginOrPassword" = "Identifiant ou mot de passe incorrect";
 "error.loginNotActive" = "Votre identifiant est actuellement désactivé, veuillez nous contacter via support@favqs.com";
 "error.loginOrPasswordMissing" = "Identifiant ou mot de passe manquant";
@@ -32,6 +33,12 @@
 "quotes.rowAction.addToFavorites" = "Ajouter aux favoris";
 "quotes.rowAction.removeFromFavorites" = "Retirer des favoris";
 
-
 // Favorites
 "favorites.title" = "Favoris";
+
+// Account
+"account.title" = "Compte";
+"account.favoriteCount" = "%@ citations favorites";
+"account.followingCount" = "%@ abonnements";
+"account.followersCount" = "%@ abonnés";
+"account.signout" = "Déconnexion";

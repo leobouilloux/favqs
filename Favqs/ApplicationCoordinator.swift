@@ -46,7 +46,7 @@ final class ApplicationCoordinator: Coordinator {
 //
         window.rootViewController = coordinator.router.toPresent()
     }
-    
+
     private func runLoginFlow(presentationType: PresentationType, with option: DeepLinkOption? = nil) {
         let coordinator = coordinatorFactory.makeLoginCoordinator(with: provider)
         coordinator.output.finishFlowAction
@@ -62,9 +62,15 @@ final class ApplicationCoordinator: Coordinator {
         window.rootViewController = coordinator.router.toPresent()
     }
 
-
     private func runMainFlow(presentationType: PresentationType, with option: DeepLinkOption? = nil) {
         let coordinator = TabbarCoordinatorFactory().makeTabbarCoordinator(provider: provider)
+        coordinator.output.userDidDisconnect
+            .subscribe(onNext: { [weak self] in
+                self?.provider.wipeData()
+                self?.runLoginFlow(presentationType: .root)
+                self?.removeDependency(coordinator)
+            })
+            .disposed(by: bag)
         addDependency(coordinator)
         coordinator.start(with: option, presentationType: presentationType)
 

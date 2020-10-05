@@ -11,7 +11,7 @@
 "error.jsonDecodeFailed" = "The data received seems to be badly formatted";
 "error.errorReceived" = "Unexpected network error";
 
-
+"error.noSessionFoundForUser" = "No session found for the current user";
 "error.invalidLoginOrPassword" = "Invalid login or password";
 "error.loginNotActive" = "Your login is currently not active, please contact support@favqs.com";
 "error.loginOrPasswordMissing" = "Login or password is missing";
@@ -38,3 +38,10 @@
 
 // Favorites
 "favorites.title" = "Favorites";
+
+// Account
+"account.title" = "Account";
+"account.favoriteCount" = "%@ favorite quotes";
+"account.followingCount" = "Following %@ accounts";
+"account.followersCount" = "%@ followers";
+"account.signout" = "Sign out";

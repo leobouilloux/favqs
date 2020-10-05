@@ -6,8 +6,8 @@
 //
 
 @testable import Favqs
-import XCTest
 import RealmSwift
+import XCTest
 
 class FavqsTests: XCTestCase {
     func testQuoteCellViewModelNotFavorite() throws {
@@ -20,18 +20,17 @@ class FavqsTests: XCTestCase {
         quote.tags.append("tag1")
         quote.tags.append("tag2")
         quote.tags.append("tag3")
-        
 
         // WHEN
         let cellViewModel = QuoteTableViewCellViewModel(quote: quote)
-                
+
         // THEN
         XCTAssertTrue(cellViewModel.author.value == "John Doe")
         XCTAssertTrue(cellViewModel.body.value == "Lorem Ipsum")
         XCTAssertTrue(cellViewModel.tags.value == "tag1, tag2, tag3")
         XCTAssertTrue(cellViewModel.favoriteImage.value == UIImage())
     }
-    
+
     func testQuoteCellViewModelIsFavorite() throws {
         // GIVEN
         let quote = Quote()
@@ -42,11 +41,10 @@ class FavqsTests: XCTestCase {
         quote.tags.append("tag1")
         quote.tags.append("tag2")
         quote.tags.append("tag3")
-        
 
         // WHEN
         let cellViewModel = QuoteTableViewCellViewModel(quote: quote)
-                
+
         // THEN
         XCTAssertTrue(cellViewModel.author.value == "John Doe")
         XCTAssertTrue(cellViewModel.body.value == "Lorem Ipsum")

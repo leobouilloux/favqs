@@ -16,15 +16,15 @@ private enum Endpoint {
     }
 
     case session
-
+    case users(login: String)
     case quotes
     case quoteOfTheDay
     case quote(id: Int)
-    
 
     var urlString: String {
         switch self {
         case .session: return baseURL.appendingPathComponent("session").absoluteString
+        case let .users(login): return baseURL.appendingPathComponent("users/\(login)").absoluteString
         case .quotes: return baseURL.appendingPathComponent("quotes").absoluteString
         case .quoteOfTheDay: return baseURL.appendingPathComponent("qotd").absoluteString
         case let .quote(id): return baseURL.appendingPathComponent("quotes/\(id)").absoluteString
@@ -35,14 +35,16 @@ private enum Endpoint {
 class NetworkProvider: Provider {
     let realmManager: Realm? = try? Realm()
 
-    private let apiKey = "5247f8e12299d74c8e81010ebff7861e"
+    var headers = HTTPHeaders()
 
-    lazy var headers: HTTPHeaders = {
-        var authHeaders = HTTPHeaders()
-        authHeaders.add(HTTPHeader(name: "Authorization", value: "Token token=\(self.apiKey)"))
-        return authHeaders
-    }()
-    
+    init(apiKey: String) {
+        self.headers.add(HTTPHeader(name: "Authorization", value: "Token token=\(apiKey)"))
+    }
+
+    func saveToken(token: String) {
+        headers.add(HTTPHeader(name: "User-Token", value: token))
+    }
+
     func signIn(login: String, password: String, completion: @escaping (Result<UserSession, Error>) -> Void) {
         let parameters: Parameters = [
             "user": [
@@ -50,7 +52,7 @@ class NetworkProvider: Provider {
                 "password": password
             ]
         ]
-        
+
         AF.request(Endpoint.session.urlString,
                    method: .post,
                    parameters: parameters,
@@ -79,6 +81,30 @@ class NetworkProvider: Provider {
                 completion(.failure(NetworkError.noDataReceived))
             }
         }
+    }
+
+    func signOut(completion: @escaping (Result<Void, Error>) -> Void) {
+        AF.request(Endpoint.session.urlString,
+                   method: .delete,
+                   headers: headers
+        )
+        .validate()
+        .responseJSON { [weak self] response in
+            if let data = response.data {
+                let decoder = JSONDecoder()
+                do {
+                    let sessionError = try decoder.decode(UserSessionError.self, from: data)
+                    completion(.failure(sessionError.error))
+                } catch {
+                    completion(.success(()))
+                }
+            } else if let error = response.error {
+                print(error.localizedDescription)
+                completion(.failure(NetworkError.errorReceived))
+            } else {
+                completion(.failure(NetworkError.noDataReceived))
+            }
+        }
 
     }
 
@@ -99,7 +125,7 @@ class NetworkProvider: Provider {
                 do {
                     let decoder = JSONDecoder()
                     let items = try decoder.decode(QuotesResponse.self, from: data)
-                    self?.saveToDataBase(quotes: items.quotes)
+                    self?.saveQuotesToDataBase(quotes: items.quotes)
                     completion(.success(items.quotes))
                 } catch {
                     completion(.failure(NetworkError.jsonDecodeFailed))
@@ -113,9 +139,48 @@ class NetworkProvider: Provider {
         }
     }
 
-    func saveToDataBase(quotes: [Quote]) {
+    func getUser(login: String, completion: @escaping (Result<User, Error>) -> Void) {
+        AF.request(Endpoint.users(login: login).urlString,
+                   method: .get,
+                   encoding: URLEncoding.default,
+                   headers: headers
+        )
+        .validate()
+        .responseJSON { [weak self] response in
+            if let data = response.data {
+                do {
+                    let decoder = JSONDecoder()
+                    let user = try decoder.decode(User.self, from: data)
+                    self?.saveUserToDataBase(user: user)
+                    completion(.success(user))
+                } catch {
+                    completion(.failure(NetworkError.jsonDecodeFailed))
+                }
+            } else if let error = response.error {
+                print(error.localizedDescription)
+                completion(.failure(NetworkError.errorReceived))
+            } else {
+                completion(.failure(NetworkError.noDataReceived))
+            }
+        }
+    }
+
+    func saveUserToDataBase(user: User) {
+        _ = try? realmManager?.write {
+            realmManager?.add(user, update: .modified)
+        }
+    }
+
+    func saveQuotesToDataBase(quotes: [Quote]) {
         _ = try? realmManager?.write {
             realmManager?.add(quotes, update: .modified)
         }
+    }
+
+    func wipeData() {
+        _ = try? realmManager?.write {
+            realmManager?.deleteAll()
+        }
+        headers.remove(name: "User-Token")
     }
 }
