@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  Favqs
+
+  Created by Leo Marcotte on 04/10/2020.
+  
+*/
+
+// Errors
+"error.noDataReceived" = "Aucune donnée n'est renvoyée par le serveur distant";
+"error.jsonDecodeFailed" = "Les données reçue ne sont pas correctement formatées";
+"error.errorReceived" = "Erreur réseau";
+
+// SplashScreen
+"splashScreen.title" = "FavQs";
+"splashScreen.avatarCaption" = "Test technique réalisé par Léo Marcotte";
+
+// Quotes
+"quotes.title" = "Citations";
+"quotes.rowAction.addToFavorites" = "Ajouter aux favoris";
+"quotes.rowAction.removeFromFavorites" = "Retirer des favoris";
+
+
+// Favorites
+"favorites.title" = "Favoris";
