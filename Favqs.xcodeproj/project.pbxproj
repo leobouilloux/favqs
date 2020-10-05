@@ -74,6 +74,8 @@
 		B3DBE7E3252A6E7F00EAE169 /* QuoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7E2252A6E7F00EAE169 /* QuoteTableViewCell.swift */; };
 		B3DBE7E8252A72C000EAE169 /* QuotesCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7E7252A72C000EAE169 /* QuotesCellType.swift */; };
 		B3DBE7ED252A8BB400EAE169 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7EC252A8BB400EAE169 /* NetworkError.swift */; };
+		B3DBE7F8252A99A600EAE169 /* FavoritesCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE7F7252A99A600EAE169 /* FavoritesCellType.swift */; };
+		B3DBE80B252AB03A00EAE169 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DBE80A252AB03A00EAE169 /* Array+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +174,8 @@
 		B3DBE7E2252A6E7F00EAE169 /* QuoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteTableViewCell.swift; sourceTree = "<group>"; };
 		B3DBE7E7252A72C000EAE169 /* QuotesCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesCellType.swift; sourceTree = "<group>"; };
 		B3DBE7EC252A8BB400EAE169 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B3DBE7F7252A99A600EAE169 /* FavoritesCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCellType.swift; sourceTree = "<group>"; };
+		B3DBE80A252AB03A00EAE169 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +324,7 @@
 				B3DBE725252A440C00EAE169 /* UIColor+Extension.swift */,
 				B3DBE7CA252A6D3B00EAE169 /* UITableView+Extension.swift */,
 				B3DBE7CF252A6D5000EAE169 /* UITableViewCell+Extension.swift */,
+				B3DBE80A252AB03A00EAE169 /* Array+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -439,6 +444,7 @@
 				B3DBE75C252A4BEB00EAE169 /* FavoritesViewController.swift */,
 				B3DBE76B252A4CF400EAE169 /* FavoritesViewModelInterface.swift */,
 				B3DBE770252A4D2400EAE169 /* FavoritesViewModel.swift */,
+				B3DBE7F7252A99A600EAE169 /* FavoritesCellType.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -736,6 +742,7 @@
 				B3DBE7BC252A642300EAE169 /* QuotesResponse.swift in Sources */,
 				B3080AC125295796007D319B /* BaseCoordinator.swift in Sources */,
 				B3080ABD25295796007D319B /* RouterImp.swift in Sources */,
+				B3DBE7F8252A99A600EAE169 /* FavoritesCellType.swift in Sources */,
 				B3080AE0252961BE007D319B /* LoaderController.swift in Sources */,
 				B3DBE720252967C100EAE169 /* SplashScreenOutput.swift in Sources */,
 				B3DBE7E8252A72C000EAE169 /* QuotesCellType.swift in Sources */,
@@ -762,6 +769,7 @@
 				B3DBE793252A52FC00EAE169 /* QuotesCoordinatorFactory.swift in Sources */,
 				B3DBE7D0252A6D5000EAE169 /* UITableViewCell+Extension.swift in Sources */,
 				B3DBE71B252967C100EAE169 /* SplashScreenCoordinator.swift in Sources */,
+				B3DBE80B252AB03A00EAE169 /* Array+Extension.swift in Sources */,
 				B3080ABE25295796007D319B /* Presentable.swift in Sources */,
 				B3DBE7DE252A6E0900EAE169 /* QuoteTableViewCellViewModel.swift in Sources */,
 				B3DBE750252A48EC00EAE169 /* TabBarController.swift in Sources */,

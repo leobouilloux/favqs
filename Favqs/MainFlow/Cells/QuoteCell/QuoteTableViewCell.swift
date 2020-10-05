@@ -11,7 +11,9 @@ final class QuoteTableViewCell: RxTableViewCell {
     private let bodyLabel = UILabel()
     private let authorLabel = UILabel()
     private let tagsLabel = UILabel()
-
+    private let separatorView = UIView()
+    private let favoriteImageView = UIImageView()
+    
     var viewModel: QuoteTableViewCellViewModelInterface?
 
     required init?(coder aDecoder: NSCoder) {
@@ -35,9 +37,24 @@ final class QuoteTableViewCell: RxTableViewCell {
 private extension QuoteTableViewCell {
     /* View */
     func setupView() {
+        setupSeparatorView()
         setupBodyLabel()
+        setupFavoriteImageView()
         setupAuthorLabel()
         setupTagsLabel()
+    }
+    
+    func setupSeparatorView() {
+        separatorView.backgroundColor = .separator
+        addSubview(separatorView)
+        
+        separatorView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 1),
+            separatorView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
     
     func setupBodyLabel() {
@@ -50,7 +67,21 @@ private extension QuoteTableViewCell {
         NSLayoutConstraint.activate([
             bodyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             bodyLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            bodyLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8)
+            bodyLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16)
+        ])
+    }
+    
+    func setupFavoriteImageView() {
+        favoriteImageView.contentMode = .center
+        favoriteImageView.tintColor = .orange
+        addSubview(favoriteImageView)
+        
+        favoriteImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            favoriteImageView.widthAnchor.constraint(equalToConstant: 52),
+            favoriteImageView.heightAnchor.constraint(equalToConstant: 52),
+            favoriteImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            favoriteImageView.bottomAnchor.constraint(equalTo: separatorView.topAnchor, constant: -16)
         ])
     }
     
@@ -62,7 +93,7 @@ private extension QuoteTableViewCell {
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             authorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            authorLabel.trailingAnchor.constraint(equalTo: favoriteImageView.leadingAnchor, constant: -16),
             authorLabel.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: 8)
         ])
 
@@ -76,17 +107,18 @@ private extension QuoteTableViewCell {
         tagsLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tagsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            tagsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            tagsLabel.trailingAnchor.constraint(equalTo: favoriteImageView.leadingAnchor, constant: -16),
             tagsLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 8),
-            tagsLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
+            tagsLabel.bottomAnchor.constraint(equalTo: separatorView.topAnchor, constant: -16)
         ])
     }
-    
+
     /* Rx Bindings */
     func setupRxBindings(with viewModel: QuoteTableViewCellViewModelInterface) {
         bindBodyLabel(with: viewModel)
         bindAuthorLabel(with: viewModel)
         bindTagsLabel(with: viewModel)
+        bindFavoriteImageView(with: viewModel)
     }
     
     func bindBodyLabel(with viewModel: QuoteTableViewCellViewModelInterface) {
@@ -99,5 +131,9 @@ private extension QuoteTableViewCell {
 
     func bindTagsLabel(with viewModel: QuoteTableViewCellViewModelInterface) {
         viewModel.tags.bind(to: tagsLabel.rx.text).disposed(by: bag)
+    }
+    
+    func bindFavoriteImageView(with viewModel: QuoteTableViewCellViewModelInterface) {
+        viewModel.favoriteImage.bind(to: favoriteImageView.rx.image).disposed(by: bag)
     }
 }

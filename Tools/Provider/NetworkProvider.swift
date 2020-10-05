@@ -29,6 +29,8 @@ fileprivate enum Endpoint {
 }
 
 class NetworkProvider: Provider {
+    let realmManager: Realm = try! Realm()
+    
     private let apiKey = "5247f8e12299d74c8e81010ebff7861e"
     
     lazy var headers: HTTPHeaders = {
@@ -69,9 +71,8 @@ class NetworkProvider: Provider {
     }
     
     func saveToDataBase(quotes: [Quote]) {
-        guard let realm = try? Realm() else { return }
-        _ = try? realm.write {
-            realm.add(quotes, update: .modified)
+        _ = try? realmManager.write {
+            realmManager.add(quotes, update: .modified)
         }
     }
 }

@@ -30,7 +30,9 @@ final class QuotesViewController: RxViewController {
         super.viewWillAppear(animated)
         
         viewModel.isControllerActive.accept(true)
-        viewModel.refreshPages()
+        if viewModel.dataSource.value.isEmpty {
+            viewModel.refreshPages()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,6 +51,7 @@ extension QuotesViewController: UITableViewDelegate {
     func setupTableView() {
         tableView.register(cell: QuoteTableViewCell.self)
         tableView.refreshControl = refreshControl
+        tableView.separatorStyle = .none
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
         view.addSubview(tableView)
 
@@ -139,5 +142,25 @@ extension QuotesViewController: UITableViewDelegate {
                 }
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let quote = viewModel.quotes[safeIndex: indexPath.row] else { return nil }
+        let title: String
+        let backgroundColor: UIColor
+        if quote.isFavorite {
+            title = Loc.Quotes.removeFromFavorite
+            backgroundColor = .red
+        } else {
+            title = Loc.Quotes.addToFavorite
+            backgroundColor = .blue
+        }
+        
+        let favoriteAction = UIContextualAction(style: .normal, title: title) { [weak self] (_, _, completionHandler) in
+            self?.viewModel.toggleIsFavorite(for: quote)
+            completionHandler(true)
+        }
+        favoriteAction.backgroundColor = backgroundColor
+        return UISwipeActionsConfiguration(actions: [favoriteAction])
     }
 }

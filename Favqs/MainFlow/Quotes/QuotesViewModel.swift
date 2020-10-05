@@ -19,6 +19,7 @@ final class QuotesViewModel: QuotesViewModelInterface {
     let isControllerActive = BehaviorRelay<Bool>(value: false)
     let errorMessage = PublishRelay<String>()
     
+    var quotes = [Quote]()
     let dataSource = BehaviorRelay<[QuotesCellType]>(value: [])
     
     private let bag = DisposeBag()
@@ -32,8 +33,17 @@ final class QuotesViewModel: QuotesViewModelInterface {
         bindIsControllerActive()
     }
     
+    func toggleIsFavorite(for quote: Quote) {
+        let quoteCopy = Quote(value: quote)
+        quoteCopy.isFavorite.toggle()
+        
+        try! provider.realmManager.write {
+            provider.realmManager.add(quoteCopy, update: .modified)
+        }
+    }
+    
     func refreshPages() {
-        self.isLoading.accept(true)
+        isLoading.accept(true)
         dataSource.accept([])
         for page in 1...pageIndex {
             fetchQuotes(for: page)
@@ -57,7 +67,7 @@ final class QuotesViewModel: QuotesViewModelInterface {
         }
     }
     
-    func setupDataSource(with quotes: [Quote]) {
+    private func setupDataSource(with quotes: [Quote]) {
         var cells = dataSource.value
         quotes.forEach { (quote) in
             cells.append(.quote(value: quote))
@@ -78,11 +88,11 @@ final class QuotesViewModel: QuotesViewModelInterface {
     }
     
     private func watchDataBase() {
-        guard let realm = try? Realm() else { return }
-        let objects = realm.objects(Quote.self)
+        let objects = provider.realmManager.objects(Quote.self)
         
         dataBaseDisposable = Observable.array(from: objects)
             .subscribe(onNext: { [weak self] quotes in
+                self?.quotes = quotes
                 self?.setupDataSource(with: quotes)
             })
     }

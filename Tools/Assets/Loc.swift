@@ -21,6 +21,8 @@ enum Loc {
     
     enum Quotes {
         static var title = NSLocalizedString("quotes.title", comment: "")
+        static var addToFavorite = NSLocalizedString("quotes.rowAction.addToFavorites", comment: "")
+        static var removeFromFavorite = NSLocalizedString("quotes.rowAction.removeFromFavorites", comment: "")
     }
     
     enum Favorites {

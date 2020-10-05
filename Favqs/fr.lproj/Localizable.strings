@@ -17,6 +17,9 @@
 
 // Quotes
 "quotes.title" = "Citations";
+"quotes.rowAction.addToFavorites" = "Ajouter aux favoris";
+"quotes.rowAction.removeFromFavorites" = "Retirer des favoris";
+
 
 // Favorites
 "favorites.title" = "Favoris";

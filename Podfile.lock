@@ -1,14 +1,14 @@
 PODS:
-  - Alamofire (5.2.1)
-  - Realm (5.2.0):
-    - Realm/Headers (= 5.2.0)
-  - Realm/Headers (5.2.0)
-  - RealmSwift (5.2.0):
-    - Realm (= 5.2.0)
-  - RxAlamofire (5.6.0):
-    - RxAlamofire/Core (= 5.6.0)
-  - RxAlamofire/Core (5.6.0):
-    - Alamofire (~> 5.1)
+  - Alamofire (5.2.2)
+  - Realm (5.4.7):
+    - Realm/Headers (= 5.4.7)
+  - Realm/Headers (5.4.7)
+  - RealmSwift (5.4.7):
+    - Realm (= 5.4.7)
+  - RxAlamofire (5.6.2):
+    - RxAlamofire/Core (= 5.6.2)
+  - RxAlamofire/Core (5.6.2):
+    - Alamofire (~> 5.2)
     - RxSwift (~> 5.1)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
@@ -19,8 +19,8 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
-  - SwiftGen (6.2.1)
-  - SwiftLint (0.39.2)
+  - SwiftGen (6.3.0)
+  - SwiftLint (0.40.3)
 
 DEPENDENCIES:
   - Alamofire
@@ -46,16 +46,16 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
-  Realm: f749c723e272f08fdf1939af5e61d2bd09b203e8
-  RealmSwift: bf0ab78b52c5bafba8b3ad73be8dfb4c1ea5cf01
-  RxAlamofire: f34ddbab56fa2a36f99737f4d4ecc22288a1384f
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  Realm: 4bfc08e376b2e30c84ec3200ebe715574da05cc0
+  RealmSwift: ed40f371b62e8677141939e05b44a0c1a0a2d965
+  RxAlamofire: aa949d345b1689eae02b7c7a217518878144f6df
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRealm: 50e5fe5c1f22518205afbb313fbc5580d73bc586
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
-  SwiftGen: 62e69d127507be1538d4263e137b2290cd6ab272
-  SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
+  SwiftGen: 3d5024a47ea79e408cded20763d7a17d18a4548c
+  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
 PODFILE CHECKSUM: aabd748ab5f9d46bb104f86eba2558ff4b14a9f9
 

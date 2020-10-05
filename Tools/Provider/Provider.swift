@@ -7,7 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol Provider {
+    var realmManager: Realm { get }
+    
     func fetchQuotes(for page: Int, completion: @escaping (Result<[Quote], Error>) -> Void)
 }

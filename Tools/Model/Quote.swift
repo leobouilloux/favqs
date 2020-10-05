@@ -12,6 +12,8 @@ class Quote: Object, Decodable {
     var tags: List<String> = List<String>()
     @objc dynamic var author: String = ""
     @objc dynamic var body: String = ""
+    
+    @objc dynamic var isFavorite: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case id

@@ -15,6 +15,8 @@ enum Assets {
     enum Icons {
         static var quoteBubbleFill = UIImage(systemName: "quote.bubble.fill") ?? UIImage()
         static var starFill = UIImage(systemName: "star.fill") ?? UIImage()
+        static var starCircleFill = UIImage(systemName: "star.circle.fill") ?? UIImage()
+        
         
         static var error = UIImage(systemName: "exclamationmark.circle.fill") ?? UIImage()
         static var warning = UIImage(systemName: "exclamationmark.triangle.fill") ?? UIImage()
