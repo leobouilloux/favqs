@@ -27,9 +27,6 @@ final class LoginViewController: RxViewController {
 
         setupView()
         setupRxBindings()
-
-        loginTextField.text = "leobouilloux"
-        passwordTextField.text = "zJm|0sel"
     }
 }
 
