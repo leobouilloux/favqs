@@ -16,6 +16,7 @@ open Favqs.xcworkspace
 - Offline ready thanks to realm
 - Save your favorite quotes in a dedicated section
 - Dark/Light mode are supported
+- Pagination (scroll to bottom to load more quotes)
 
 ## Architecture
 The project has been built using the MVVM-C (Model View ViewModel and Coordinators) architecture.
@@ -65,10 +66,10 @@ let localizable = Loc.SplashScreen.caption
 I have a private repository containing a few swift files with different tools.
 I used some of them for this project and if needed, I can show you this repository content.
 
-Alamofire > network requests
-Realm > persist the data
-RxCocoa/RxSwift > React programming
-RxRealm > Realm rx wrapper
+- Alamofire (network requests)
+- Realm (persist the data)
+- RxCocoa/RxSwift (React programming)
+- RxRealm (Realm Rx wrapper)
 
 ## Data provider
 I implemented a very simple Provider protocol with one method to fetch data.
