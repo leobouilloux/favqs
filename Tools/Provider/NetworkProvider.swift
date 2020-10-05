@@ -34,15 +34,20 @@ private enum Endpoint {
 
 class NetworkProvider: Provider {
     let realmManager: Realm? = try? Realm()
-
-    var headers = HTTPHeaders()
-
-    init(apiKey: String) {
-        self.headers.add(HTTPHeader(name: "Authorization", value: "Token token=\(apiKey)"))
+    private let apiKey: String
+    
+    var headers: HTTPHeaders {
+        var headers = HTTPHeaders()
+        headers.add(HTTPHeader(name: "Authorization", value: "Token token=\(apiKey)"))
+        
+        if let session = realmManager?.objects(UserSession.self).first {
+            headers.add(HTTPHeader(name: "User-Token", value: session.token))
+        }
+        return headers
     }
 
-    func saveToken(token: String) {
-        headers.add(HTTPHeader(name: "User-Token", value: token))
+    init(apiKey: String) {
+        self.apiKey = apiKey
     }
 
     func signIn(login: String, password: String, completion: @escaping (Result<UserSession, Error>) -> Void) {
@@ -65,6 +70,7 @@ class NetworkProvider: Provider {
                 let decoder = JSONDecoder()
                 do {
                     let session = try decoder.decode(UserSession.self, from: data)
+                    self?.saveSessionToDataBase(session: session)
                     completion(.success(session))
                 } catch {
                     do {
@@ -165,6 +171,12 @@ class NetworkProvider: Provider {
         }
     }
 
+    func saveSessionToDataBase(session: UserSession) {
+        _ = try? realmManager?.write {
+            realmManager?.add(session, update: .modified)
+        }
+    }
+    
     func saveUserToDataBase(user: User) {
         _ = try? realmManager?.write {
             realmManager?.add(user, update: .modified)
@@ -181,6 +193,5 @@ class NetworkProvider: Provider {
         _ = try? realmManager?.write {
             realmManager?.deleteAll()
         }
-        headers.remove(name: "User-Token")
     }
 }

@@ -45,7 +45,6 @@ final class LoginViewModel: LoginViewModelInterface {
                     self?.errorMessage.accept(error.userFriendlyMessage)
                 }
             case let .success(session):
-                self?.provider.saveToken(token: session.token)
                 self?.provider.getUser(login: session.login, completion: { _ in
                     self?.output.userDidConnect.accept(())
                 })

@@ -36,7 +36,12 @@ final class ApplicationCoordinator: Coordinator {
         let coordinator = coordinatorFactory.makeSplashScreenCoordinator(with: provider)
         coordinator.output.finishFlowAction
             .subscribe(onNext: { [weak self, weak coordinator] in
-                self?.runLoginFlow(presentationType: .root)//runMainFlow(presentationType: .root)
+                
+                if self?.provider.realmManager?.objects(UserSession.self).first != nil {
+                    self?.runMainFlow(presentationType: .root)
+                } else {
+                    self?.runLoginFlow(presentationType: .root)
+                }
                 self?.removeDependency(coordinator)
             })
             .disposed(by: bag)

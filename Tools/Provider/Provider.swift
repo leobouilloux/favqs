@@ -18,7 +18,5 @@ protocol Provider {
 
     func getUser(login: String, completion: @escaping (Result<User, Error>) -> Void)
 
-    func saveToken(token: String)
-
     func wipeData()
 }
