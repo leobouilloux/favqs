@@ -36,7 +36,7 @@ final class ApplicationCoordinator: Coordinator {
         let coordinator = coordinatorFactory.makeSplashScreenCoordinator(with: provider)
         coordinator.output.finishFlowAction
             .subscribe(onNext: { [weak self, weak coordinator] in
-                self?.runMainFlow(presentationType: .root)
+                self?.runLoginFlow(presentationType: .root)//runMainFlow(presentationType: .root)
                 self?.removeDependency(coordinator)
             })
             .disposed(by: bag)
@@ -46,6 +46,22 @@ final class ApplicationCoordinator: Coordinator {
 //
         window.rootViewController = coordinator.router.toPresent()
     }
+    
+    private func runLoginFlow(presentationType: PresentationType, with option: DeepLinkOption? = nil) {
+        let coordinator = coordinatorFactory.makeLoginCoordinator(with: provider)
+        coordinator.output.finishFlowAction
+            .subscribe(onNext: { [weak self, weak coordinator] in
+                self?.runMainFlow(presentationType: .root)
+                self?.removeDependency(coordinator)
+            })
+            .disposed(by: bag)
+
+        addDependency(coordinator)
+        coordinator.start(with: option, presentationType: presentationType)
+
+        window.rootViewController = coordinator.router.toPresent()
+    }
+
 
     private func runMainFlow(presentationType: PresentationType, with option: DeepLinkOption? = nil) {
         let coordinator = TabbarCoordinatorFactory().makeTabbarCoordinator(provider: provider)
@@ -53,4 +69,5 @@ final class ApplicationCoordinator: Coordinator {
         coordinator.start(with: option, presentationType: presentationType)
 
         window.rootViewController = coordinator.tabbarRouter.toPresent()
-    }}
+    }
+}

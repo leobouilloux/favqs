@@ -11,9 +11,25 @@
 "error.jsonDecodeFailed" = "The data received seems to be badly formatted";
 "error.errorReceived" = "Unexpected network error";
 
+
+"error.invalidLoginOrPassword" = "Invalid login or password";
+"error.loginNotActive" = "Your login is currently not active, please contact support@favqs.com";
+"error.loginOrPasswordMissing" = "Login or password is missing";
+"error.unexpectedLoginError" = "Unexpected login error";
+
+
+
+
+
 // SplashScreen
 "splashScreen.title" = "FavQs";
 "splashScreen.avatarCaption" = "Technical test project made by Léo Marcotte";
+
+// Login
+"login.title" = "Sign in";
+"login.login" = "Login";
+"login.password" = "Password";
+"login.button" = "Sign in";
 
 // Quotes
 "quotes.title" = "Quotes";

@@ -12,5 +12,6 @@ import RealmSwift
 protocol Provider {
     var realmManager: Realm? { get }
 
+    func signIn(login: String, password: String, completion: @escaping (Result<UserSession, Error>) -> Void)
     func fetchQuotes(for page: Int, completion: @escaping (Result<[Quote], Error>) -> Void)
 }

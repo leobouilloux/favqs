@@ -15,12 +15,16 @@ private enum Endpoint {
         return url
     }
 
+    case session
+
     case quotes
     case quoteOfTheDay
     case quote(id: Int)
+    
 
     var urlString: String {
         switch self {
+        case .session: return baseURL.appendingPathComponent("session").absoluteString
         case .quotes: return baseURL.appendingPathComponent("quotes").absoluteString
         case .quoteOfTheDay: return baseURL.appendingPathComponent("qotd").absoluteString
         case let .quote(id): return baseURL.appendingPathComponent("quotes/\(id)").absoluteString
@@ -38,6 +42,45 @@ class NetworkProvider: Provider {
         authHeaders.add(HTTPHeader(name: "Authorization", value: "Token token=\(self.apiKey)"))
         return authHeaders
     }()
+    
+    func signIn(login: String, password: String, completion: @escaping (Result<UserSession, Error>) -> Void) {
+        let parameters: Parameters = [
+            "user": [
+                "login": login,
+                "password": password
+            ]
+        ]
+        
+        AF.request(Endpoint.session.urlString,
+                   method: .post,
+                   parameters: parameters,
+                   encoding: JSONEncoding.default,
+                   headers: headers
+        )
+        .validate()
+        .responseJSON { [weak self] response in
+            if let data = response.data {
+                let decoder = JSONDecoder()
+                do {
+                    let session = try decoder.decode(UserSession.self, from: data)
+                    completion(.success(session))
+                } catch {
+                    do {
+                        let sessionError = try decoder.decode(UserSessionError.self, from: data)
+                        completion(.failure(sessionError.error))
+                    } catch {
+                        completion(.failure(NetworkError.jsonDecodeFailed))
+                    }
+                }
+            } else if let error = response.error {
+                print(error.localizedDescription)
+                completion(.failure(NetworkError.errorReceived))
+            } else {
+                completion(.failure(NetworkError.noDataReceived))
+            }
+        }
+
+    }
 
     func fetchQuotes(for page: Int, completion: @escaping (Result<[Quote], Error>) -> Void) {
         let parameters: Parameters = [
