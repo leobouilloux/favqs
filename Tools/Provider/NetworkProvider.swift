@@ -9,16 +9,16 @@
 import Alamofire
 import RealmSwift
 
-fileprivate enum Endpoint {
+private enum Endpoint {
     var baseURL: URL {
         guard let url = URL(string: "https://favqs.com/api") else { fatalError("Endpoint base url is not valid") }
         return url
     }
-    
+
     case quotes
     case quoteOfTheDay
     case quote(id: Int)
-    
+
     var urlString: String {
         switch self {
         case .quotes: return baseURL.appendingPathComponent("quotes").absoluteString
@@ -29,21 +29,21 @@ fileprivate enum Endpoint {
 }
 
 class NetworkProvider: Provider {
-    let realmManager: Realm = try! Realm()
-    
+    let realmManager: Realm? = try? Realm()
+
     private let apiKey = "5247f8e12299d74c8e81010ebff7861e"
-    
+
     lazy var headers: HTTPHeaders = {
         var authHeaders = HTTPHeaders()
         authHeaders.add(HTTPHeader(name: "Authorization", value: "Token token=\(self.apiKey)"))
         return authHeaders
     }()
-    
+
     func fetchQuotes(for page: Int, completion: @escaping (Result<[Quote], Error>) -> Void) {
         let parameters: Parameters = [
             "page": page
         ]
-        
+
         AF.request(Endpoint.quotes.urlString,
                    method: .get,
                    parameters: parameters,
@@ -69,10 +69,10 @@ class NetworkProvider: Provider {
             }
         }
     }
-    
+
     func saveToDataBase(quotes: [Quote]) {
-        _ = try? realmManager.write {
-            realmManager.add(quotes, update: .modified)
+        _ = try? realmManager?.write {
+            realmManager?.add(quotes, update: .modified)
         }
     }
 }

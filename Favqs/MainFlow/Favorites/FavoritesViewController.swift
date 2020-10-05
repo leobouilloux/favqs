@@ -9,31 +9,31 @@ import UIKit
 
 final class FavoritesViewController: RxViewController {
     private let viewModel: FavoritesViewModelInterface
-    
+
     private let tableView = UITableView()
-    
+
     init(with viewModel: FavoritesViewModelInterface) {
         self.viewModel = viewModel
 
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
         setupRxBindings()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         viewModel.isControllerActive.accept(true)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         viewModel.isControllerActive.accept(false)
     }
 }
@@ -43,7 +43,7 @@ extension FavoritesViewController: UITableViewDelegate {
     func setupView() {
         setupTableView()
     }
-    
+
     func setupTableView() {
         tableView.register(cell: QuoteTableViewCell.self)
         tableView.separatorStyle = .none
@@ -58,17 +58,17 @@ extension FavoritesViewController: UITableViewDelegate {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
-    
+
     /* Rx Bindings */
     func setupRxBindings() {
         bindNavigationItems()
         bindTableView()
     }
-    
+
     func bindNavigationItems() {
         viewModel.title.bind(to: navigationItem.rx.title).disposed(by: bag)
     }
-    
+
     func bindTableView() {
         tableView
             .rx
@@ -78,16 +78,16 @@ extension FavoritesViewController: UITableViewDelegate {
             .asDriver(onErrorJustReturn: [])
             .drive(tableView.rx.items) { [weak self] _, row, cellType in
                 let indexPath = IndexPath(row: row, section: 0)
-                
+
                 return self?.cell(for: cellType, indexPath: indexPath) ?? UITableViewCell()
             }
             .disposed(by: bag)
     }
-        
+
     /* Helpers */
     func cell(for cellType: FavoritesCellType, indexPath: IndexPath) -> UITableViewCell {
         let cell = QuoteTableViewCell()
-        
+
         switch (cellType, cell) {
         case let (.quote(value: quote), cell as QuoteTableViewCell):
             let cellViewModel = QuoteTableViewCellViewModel(quote: quote)
@@ -96,11 +96,15 @@ extension FavoritesViewController: UITableViewDelegate {
         }
         return cell
     }
-        
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let favQuote = viewModel.favoriteQuotes[safeIndex: indexPath.row] else { return nil }
-        
-        let favoriteAction = UIContextualAction(style: .normal, title: Loc.Quotes.removeFromFavorite) { [weak self] (_, _, completionHandler) in
+
+        let favoriteAction = UIContextualAction(
+            style: .normal,
+            title: Loc.Quotes.removeFromFavorite
+        ) { [weak self] _, _, completionHandler in
             self?.viewModel.removeFromFavorite(quote: favQuote)
             completionHandler(true)
         }
@@ -108,4 +112,3 @@ extension FavoritesViewController: UITableViewDelegate {
         return UISwipeActionsConfiguration(actions: [favoriteAction])
     }
 }
-

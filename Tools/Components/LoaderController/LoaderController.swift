@@ -18,7 +18,6 @@ public final class LoaderController: UIViewController {
 }
 
 private extension LoaderController {
-    /******************************************************/
     // MARK: - View
     func setupView() {
         view.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
@@ -45,7 +44,6 @@ private extension LoaderController {
         ])
     }
 
-    /******************************************************/
     // MARK: - RxBindings
     func setupRxBindings() {
 

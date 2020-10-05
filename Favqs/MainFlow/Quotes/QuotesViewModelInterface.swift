@@ -14,7 +14,7 @@ protocol QuotesViewModelInterface {
     var isLoading: BehaviorRelay<Bool> { get }
     var isControllerActive: BehaviorRelay<Bool> { get }
     var errorMessage: PublishRelay<String> { get }
-    
+
     func refreshPages()
     func fetchNextPage()
     func toggleIsFavorite(for quote: Quote)

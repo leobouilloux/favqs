@@ -9,35 +9,35 @@ import UIKit
 
 final class QuotesViewController: RxViewController {
     private let viewModel: QuotesViewModelInterface
-    
+
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
-    
+
     init(with viewModel: QuotesViewModelInterface) {
         self.viewModel = viewModel
-        
+
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
         setupRxBindings()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         viewModel.isControllerActive.accept(true)
         if viewModel.dataSource.value.isEmpty {
             viewModel.refreshPages()
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         viewModel.isControllerActive.accept(false)
     }
 }
@@ -47,7 +47,7 @@ extension QuotesViewController: UITableViewDelegate {
     func setupView() {
         setupTableView()
     }
-    
+
     func setupTableView() {
         tableView.register(cell: QuoteTableViewCell.self)
         tableView.refreshControl = refreshControl
@@ -63,7 +63,7 @@ extension QuotesViewController: UITableViewDelegate {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
-    
+
     /* Rx Bindings */
     func setupRxBindings() {
         bindNavigationItems()
@@ -71,11 +71,11 @@ extension QuotesViewController: UITableViewDelegate {
         bindRefreshControl()
         bindErrorMessage()
     }
-    
+
     func bindNavigationItems() {
         viewModel.title.bind(to: navigationItem.rx.title).disposed(by: bag)
     }
-    
+
     func bindTableView() {
         tableView
             .rx
@@ -85,12 +85,12 @@ extension QuotesViewController: UITableViewDelegate {
             .asDriver(onErrorJustReturn: [])
             .drive(tableView.rx.items) { [weak self] _, row, cellType in
                 let indexPath = IndexPath(row: row, section: 0)
-                
+
                 return self?.cell(for: cellType, indexPath: indexPath) ?? UITableViewCell()
             }
             .disposed(by: bag)
     }
-    
+
     func bindRefreshControl() {
         refreshControl.rx.controlEvent(.valueChanged)
             .subscribe(onNext: { [weak self] _ in
@@ -109,7 +109,7 @@ extension QuotesViewController: UITableViewDelegate {
             })
             .disposed(by: bag)
     }
-    
+
     func bindErrorMessage() {
         viewModel.errorMessage
             .subscribe(onNext: { [weak self] errorMessage in
@@ -118,13 +118,13 @@ extension QuotesViewController: UITableViewDelegate {
                 }
             })
             .disposed(by: bag)
-        
+
     }
-    
+
     /* Helpers */
     func cell(for cellType: QuotesCellType, indexPath: IndexPath) -> UITableViewCell {
         let cell = QuoteTableViewCell()
-        
+
         switch (cellType, cell) {
         case let (.quote(value: quote), cell as QuoteTableViewCell):
             let cellViewModel = QuoteTableViewCellViewModel(quote: quote)
@@ -133,18 +133,19 @@ extension QuotesViewController: UITableViewDelegate {
         }
         return cell
     }
-    
+
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if scrollView == tableView{
-            if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
+        if scrollView == tableView {
+            if (scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height {
                 if !viewModel.isLoading.value {
                     viewModel.fetchNextPage()
                 }
             }
         }
     }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let quote = viewModel.quotes[safeIndex: indexPath.row] else { return nil }
         let title: String
         let backgroundColor: UIColor
@@ -155,8 +156,10 @@ extension QuotesViewController: UITableViewDelegate {
             title = Loc.Quotes.addToFavorite
             backgroundColor = .blue
         }
-        
-        let favoriteAction = UIContextualAction(style: .normal, title: title) { [weak self] (_, _, completionHandler) in
+
+        let favoriteAction = UIContextualAction(
+            style: .normal,
+            title: title) { [weak self] _, _, completionHandler in
             self?.viewModel.toggleIsFavorite(for: quote)
             completionHandler(true)
         }

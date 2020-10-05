@@ -5,7 +5,6 @@
 //  Created by Leo Marcotte on 04/10/2020.
 //
 
-
 import RxSwift
 
 final class FavoritesCoordinator: BaseCoordinator {
@@ -32,7 +31,7 @@ private extension FavoritesCoordinator {
     func setupRoot(presentationType: PresentationType) {
         let viewModel = FavoritesViewModel(provider: provider)
         let presentable = factory.makeFavoritesPresentable(with: viewModel)
-        
+
         router.navigate(to: presentable, with: presentationType)
     }
 }

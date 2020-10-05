@@ -12,7 +12,7 @@ import UIKit
 final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     private var didSetup = false
     private let bag = DisposeBag()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +21,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
         setupRxBindings()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 

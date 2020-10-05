@@ -18,13 +18,13 @@ enum Loc {
         static var title = NSLocalizedString("splashScreen.title", comment: "")
         static var avatarCaption = NSLocalizedString("splashScreen.avatarCaption", comment: "")
     }
-    
+
     enum Quotes {
         static var title = NSLocalizedString("quotes.title", comment: "")
         static var addToFavorite = NSLocalizedString("quotes.rowAction.addToFavorites", comment: "")
         static var removeFromFavorite = NSLocalizedString("quotes.rowAction.removeFromFavorites", comment: "")
     }
-    
+
     enum Favorites {
         static var title = NSLocalizedString("favorites.title", comment: "")
     }

@@ -5,7 +5,6 @@
 //  Created by Leo Marcotte on 04/10/2020.
 //
 
-
 import RxSwift
 
 final class QuotesCoordinator: BaseCoordinator {
@@ -32,7 +31,7 @@ private extension QuotesCoordinator {
     func setupRoot(presentationType: PresentationType) {
         let viewModel = QuotesViewModel(provider: provider)
         let presentable = factory.makeQuotesPresentable(with: viewModel)
-        
+
         router.navigate(to: presentable, with: presentationType)
     }
 }

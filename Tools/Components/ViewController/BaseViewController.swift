@@ -44,7 +44,6 @@ open class BaseViewController: UIViewController {
 }
 
 public extension BaseViewController {
-    /******************************************************/
     // MARK: - Loader
     func showLoader(completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {

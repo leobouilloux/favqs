@@ -107,7 +107,6 @@ private extension NavigationController {
         navigationItem.leftBarButtonItem = closeButton
     }
 
-    // *****************************************************************************
     // - MARK: Rx Bindings
     func setupRxBindings() {
         bindCloseButton()
@@ -138,7 +137,6 @@ private extension NavigationController {
 }
 
 public extension NavigationController {
-    /******************************************************/
     // MARK: - Loader
     func showLoader(completion: (() -> Void)? = nil) {
         self.loaderController.modalPresentationStyle = .overFullScreen

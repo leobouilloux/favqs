@@ -14,34 +14,34 @@ final class QuotesViewModel: QuotesViewModelInterface {
     private let provider: Provider
 
     let title = BehaviorRelay<String>(value: Loc.Quotes.title)
-    
+
     let isLoading = BehaviorRelay<Bool>(value: false)
     let isControllerActive = BehaviorRelay<Bool>(value: false)
     let errorMessage = PublishRelay<String>()
-    
+
     var quotes = [Quote]()
     let dataSource = BehaviorRelay<[QuotesCellType]>(value: [])
-    
+
     private let bag = DisposeBag()
     private var dataBaseDisposable: Disposable?
-    
+
     private var pageIndex = 1
-    
+
     init(provider: Provider) {
         self.provider = provider
-        
+
         bindIsControllerActive()
     }
-    
+
     func toggleIsFavorite(for quote: Quote) {
         let quoteCopy = Quote(value: quote)
         quoteCopy.isFavorite.toggle()
-        
-        try! provider.realmManager.write {
-            provider.realmManager.add(quoteCopy, update: .modified)
+
+        _ = try? provider.realmManager?.write {
+            provider.realmManager?.add(quoteCopy, update: .modified)
         }
     }
-    
+
     func refreshPages() {
         isLoading.accept(true)
         dataSource.accept([])
@@ -49,12 +49,12 @@ final class QuotesViewModel: QuotesViewModelInterface {
             fetchQuotes(for: page)
         }
     }
-    
+
     func fetchNextPage() {
         pageIndex += 1
         fetchQuotes(for: pageIndex)
     }
-    
+
     private func fetchQuotes(for page: Int) {
         provider.fetchQuotes(for: page) { [weak self] result in
             switch result {
@@ -66,15 +66,15 @@ final class QuotesViewModel: QuotesViewModelInterface {
             }
         }
     }
-    
+
     private func setupDataSource(with quotes: [Quote]) {
         var cells = dataSource.value
-        quotes.forEach { (quote) in
+        quotes.forEach { quote in
             cells.append(.quote(value: quote))
         }
         dataSource.accept(cells)
     }
-    
+
     func bindIsControllerActive() {
         isControllerActive
             .subscribe(onNext: { [weak self] isControllerActive in
@@ -86,10 +86,10 @@ final class QuotesViewModel: QuotesViewModelInterface {
             })
             .disposed(by: bag)
     }
-    
+
     private func watchDataBase() {
-        let objects = provider.realmManager.objects(Quote.self)
-        
+        guard let objects = provider.realmManager?.objects(Quote.self) else { return }
+
         dataBaseDisposable = Observable.array(from: objects)
             .subscribe(onNext: { [weak self] quotes in
                 self?.quotes = quotes

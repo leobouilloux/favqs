@@ -12,6 +12,6 @@ protocol SplashScreenViewModelInterface {
     var title: BehaviorRelay<String> { get }
     var avatarImage: BehaviorRelay<UIImage> { get }
     var caption: BehaviorRelay<String> { get }
-        
+
     var output: SplashScreenOutput { get }
 }

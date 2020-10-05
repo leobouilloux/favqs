@@ -12,7 +12,7 @@ class Quote: Object, Decodable {
     var tags: List<String> = List<String>()
     @objc dynamic var author: String = ""
     @objc dynamic var body: String = ""
-    
+
     @objc dynamic var isFavorite: Bool = false
 
     enum CodingKeys: String, CodingKey {
@@ -21,7 +21,7 @@ class Quote: Object, Decodable {
         case author
         case body
     }
-    
+
     override static func primaryKey() -> String? {
         return "id"
     }

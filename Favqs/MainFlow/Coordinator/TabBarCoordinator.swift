@@ -25,7 +25,7 @@ final class TabbarCoordinator: Coordinator {
         self.setupChildCoordinators()
     }
 
-    func start(with option: DeepLinkOption? = nil, presentationType: PresentationType) {
+    func start(with option: DeepLinkOption? = nil, presentationType: PresentationType = .root) {
         if let option = option {
             switch option {
             default: break

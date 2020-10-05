@@ -30,12 +30,12 @@ public enum SnackBarType {
         return .label
     }
 
-    public var image: UIImage { //TODO: Put real images here
+    public var image: UIImage {
         switch self {
-        case .error:    return UIImage(systemName: "xmark.circle.fill")!
-        case .warning:  return UIImage(systemName: "exclamationmark.triangle.fill")!
-        case .success:  return UIImage(systemName: "checkmark.circle.fill")!
-        case .info:     return UIImage(systemName: "info.circle.fill")!
+        case .error:    return Assets.Icons.error
+        case .warning:  return Assets.Icons.warning
+        case .success:  return Assets.Icons.success
+        case .info:     return Assets.Icons.info
         }
     }
 }

@@ -12,7 +12,7 @@ final class SplashScreenViewModel: SplashScreenViewModelInterface {
     let title: BehaviorRelay<String>
     let avatarImage: BehaviorRelay<UIImage>
     let caption: BehaviorRelay<String>
-    
+
     let output = SplashScreenOutput()
 
     init(with: Provider) {

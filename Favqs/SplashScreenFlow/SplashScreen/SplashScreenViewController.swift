@@ -146,22 +146,22 @@ private extension SplashScreenViewController {
             avatarLabel.trailingAnchor.constraint(equalTo: avatarView.trailingAnchor)
         ])
     }
-    
+
     /* Rx Bindings */
     func setupRxBindings() {
         bindTitleLabel()
         bindAvatarImageView()
         bindAvatarLabel()
     }
-    
+
     func bindTitleLabel() {
         viewModel.title.bind(to: titleLabel.rx.text).disposed(by: bag)
     }
-    
+
     func bindAvatarImageView() {
         viewModel.avatarImage.bind(to: avatarImageView.rx.image).disposed(by: bag)
     }
-    
+
     func bindAvatarLabel() {
         viewModel.caption.bind(to: avatarLabel.rx.text).disposed(by: bag)
     }

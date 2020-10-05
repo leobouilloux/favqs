@@ -5,8 +5,8 @@
 //  Created by Leo Marcotte on 04/10/2020.
 //
 
-import XCTest
 @testable import Favqs
+import XCTest
 
 class FavqsTests: XCTestCase {
 

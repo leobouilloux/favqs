@@ -5,9 +5,8 @@
 //  Created by Leo Marcotte on 04/10/2020.
 //
 
-import RxSwift
 import RealmSwift
-
+import RxSwift
 
 final class ApplicationCoordinator: Coordinator {
     var window: UIWindow
@@ -32,7 +31,7 @@ final class ApplicationCoordinator: Coordinator {
             runSplashScreenFlow(presentationType: .root)
         }
     }
-    
+
     private func runSplashScreenFlow(presentationType: PresentationType, option: DeepLinkOption? = nil) {
         let coordinator = coordinatorFactory.makeSplashScreenCoordinator(with: provider)
         coordinator.output.finishFlowAction

@@ -10,7 +10,7 @@ import RxSwift
 
 final class SplashScreenCoordinator: BaseCoordinator {
     private let bag = DisposeBag()
-    
+
     private let factory: SplashScreenFactory
     private let coordinatorFactory: CoordinatorFactory
     private let provider: Provider
