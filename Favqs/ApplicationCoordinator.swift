@@ -36,7 +36,12 @@ final class ApplicationCoordinator: Coordinator {
         let coordinator = coordinatorFactory.makeSplashScreenCoordinator(with: provider)
         coordinator.output.finishFlowAction
             .subscribe(onNext: { [weak self, weak coordinator] in
-                self?.runMainFlow(presentationType: .root)
+                
+                if self?.provider.realmManager?.objects(UserSession.self).first != nil {
+                    self?.runMainFlow(presentationType: .root)
+                } else {
+                    self?.runLoginFlow(presentationType: .root)
+                }
                 self?.removeDependency(coordinator)
             })
             .disposed(by: bag)
@@ -47,10 +52,33 @@ final class ApplicationCoordinator: Coordinator {
         window.rootViewController = coordinator.router.toPresent()
     }
 
+    private func runLoginFlow(presentationType: PresentationType, with option: DeepLinkOption? = nil) {
+        let coordinator = coordinatorFactory.makeLoginCoordinator(with: provider)
+        coordinator.output.finishFlowAction
+            .subscribe(onNext: { [weak self, weak coordinator] in
+                self?.runMainFlow(presentationType: .root)
+                self?.removeDependency(coordinator)
+            })
+            .disposed(by: bag)
+
+        addDependency(coordinator)
+        coordinator.start(with: option, presentationType: presentationType)
+
+        window.rootViewController = coordinator.router.toPresent()
+    }
+
     private func runMainFlow(presentationType: PresentationType, with option: DeepLinkOption? = nil) {
         let coordinator = TabbarCoordinatorFactory().makeTabbarCoordinator(provider: provider)
+        coordinator.output.userDidDisconnect
+            .subscribe(onNext: { [weak self] in
+                self?.provider.wipeData()
+                self?.runLoginFlow(presentationType: .root)
+                self?.removeDependency(coordinator)
+            })
+            .disposed(by: bag)
         addDependency(coordinator)
         coordinator.start(with: option, presentationType: presentationType)
 
         window.rootViewController = coordinator.tabbarRouter.toPresent()
-    }}
+    }
+}

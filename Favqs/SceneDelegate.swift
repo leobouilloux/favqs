@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
 
         guard let window = window else { return }
-        let provider = NetworkProvider()
+        let provider = NetworkProvider(apiKey: "5247f8e12299d74c8e81010ebff7861e")
         applicationCoordinator = ApplicationCoordinator(window: window,
                                                         coordinatorFactory: CoordinatorFactory(),
                                                         provider: provider)

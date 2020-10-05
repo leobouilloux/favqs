@@ -18,6 +18,8 @@ final class TabbarCoordinator: Coordinator {
     let provider: Provider
     let bag = DisposeBag()
 
+    let output = TabBarCoordinatorOutput()
+
     init(tabbarController: TabBarController, coordinatorFactory: CoordinatorFactory, provider: Provider) {
         self.tabbarRouter = tabbarController
         self.coordinatorFactory = coordinatorFactory
@@ -37,15 +39,18 @@ final class TabbarCoordinator: Coordinator {
     func setupChildCoordinators(with option: DeepLinkOption? = nil) {
         let quotesCoordinator = createQuotesFlow()
         let favoritesCoordinator = createFavoritesFlow()
+        let accountCoordinator = createAccountFlow()
 
         childCoordinators = [
             quotesCoordinator,
-            favoritesCoordinator
+            favoritesCoordinator,
+            accountCoordinator
         ]
 
         tabbarRouter.viewControllers = [
             quotesCoordinator.router.toPresent() as? NavigationController ?? UIViewController(),
-            favoritesCoordinator.router.toPresent() as? NavigationController ?? UIViewController()
+            favoritesCoordinator.router.toPresent() as? NavigationController ?? UIViewController(),
+            accountCoordinator.router.toPresent() as? NavigationController ?? UIViewController()
         ]
     }
 
@@ -62,6 +67,15 @@ final class TabbarCoordinator: Coordinator {
         addDependency(favoritesCoordinator)
         return favoritesCoordinator
     }
+
+    func createAccountFlow() -> AccountCoordinator {
+        let accountCoordinator = coordinatorFactory.makeAccountCoordinator(with: provider)
+        accountCoordinator.start(presentationType: .root)
+        accountCoordinator.output.userDidDisconnect.bind(to: output.userDidDisconnect).disposed(by: bag)
+        addDependency(accountCoordinator)
+        return accountCoordinator
+    }
+
 }
 
 // *****************************************************************************************************************
@@ -71,6 +85,7 @@ extension TabbarCoordinator {
         switch tabbarRouter.selectedIndex {
         case 0: return quotesRouter
         case 1: return favoritesRouter
+        case 2: return accountRouter
         default: return nil
         }
     }
@@ -81,5 +96,9 @@ extension TabbarCoordinator {
 
     var favoritesRouter: Router? {
         return (childCoordinators[1] as? FavoritesCoordinator)?.router
+    }
+
+    var accountRouter: Router? {
+        return (childCoordinators[2] as? AccountCoordinator)?.router
     }
 }

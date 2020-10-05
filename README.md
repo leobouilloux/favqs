@@ -12,6 +12,8 @@ open Favqs.xcworkspace
 <br/>
 
 ## Features
+- Connect to an existing account
+- Account page to view details and sign out.
 - Refresh the list with a "pull to refresh"
 - Offline ready thanks to realm
 - Save your favorite quotes in a dedicated section
