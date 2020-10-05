@@ -7,27 +7,51 @@
 
 @testable import Favqs
 import XCTest
+import RealmSwift
 
 class FavqsTests: XCTestCase {
+    func testQuoteCellViewModelNotFavorite() throws {
+        // GIVEN
+        let quote = Quote()
+        quote.author = "John Doe"
+        quote.body = "Lorem Ipsum"
+        quote.isFavorite = false
+        quote.tags = List<String>()
+        quote.tags.append("tag1")
+        quote.tags.append("tag2")
+        quote.tags.append("tag3")
+        
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // WHEN
+        let cellViewModel = QuoteTableViewCellViewModel(quote: quote)
+                
+        // THEN
+        XCTAssertTrue(cellViewModel.author.value == "John Doe")
+        XCTAssertTrue(cellViewModel.body.value == "Lorem Ipsum")
+        XCTAssertTrue(cellViewModel.tags.value == "tag1, tag2, tag3")
+        XCTAssertTrue(cellViewModel.favoriteImage.value == UIImage())
     }
+    
+    func testQuoteCellViewModelIsFavorite() throws {
+        // GIVEN
+        let quote = Quote()
+        quote.author = "John Doe"
+        quote.body = "Lorem Ipsum"
+        quote.isFavorite = true
+        quote.tags = List<String>()
+        quote.tags.append("tag1")
+        quote.tags.append("tag2")
+        quote.tags.append("tag3")
+        
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        // WHEN
+        let cellViewModel = QuoteTableViewCellViewModel(quote: quote)
+                
+        // THEN
+        XCTAssertTrue(cellViewModel.author.value == "John Doe")
+        XCTAssertTrue(cellViewModel.body.value == "Lorem Ipsum")
+        XCTAssertTrue(cellViewModel.tags.value == "tag1, tag2, tag3")
+        XCTAssertTrue(cellViewModel.favoriteImage.value == Assets.Icons.starCircleFill)
     }
 
 }

@@ -6,15 +6,16 @@ inhibit_all_warnings!
 def pods
     pod 'Alamofire'
     pod 'RealmSwift'
-    pod 'RxAlamofire'
     pod 'RxCocoa'
     pod 'RxRealm'
     pod 'RxSwift'
-    pod 'SwiftGen', '~> 6.0'
-    pod 'SwiftLint'
 end
 
 target 'Favqs' do
+    pods
+end
+
+target 'FavqsTests' do 
     pods
 end
 
